@@ -8,14 +8,22 @@ from odoo import api, fields, models
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    d2p_life = fields.Float(compute='_compute_d2x',
-                            string='AVG Days to Pay (lifetime)')
-    d2p_ytd = fields.Float(compute='_compute_d2x',
-                           string='AVG Days to Pay (YTD)')
-    d2r_life = fields.Float(compute='_compute_d2x',
-                            string='AVG Days to Pay (lifetime)')
-    d2r_ytd = fields.Float(compute='_compute_d2x',
-                           string='AVG Days to Pay (YTD)')
+    d2p_life = fields.Float(
+        compute='_compute_d2x',
+        string='AVG Days to Payable (lifetime)'
+    )
+    d2p_ytd = fields.Float(
+        compute='_compute_d2x',
+        string='AVG Days to Payable (YTD)'
+    )
+    d2r_life = fields.Float(
+        compute='_compute_d2x',
+        string='AVG Days to Receivable (lifetime)'
+    )
+    d2r_ytd = fields.Float(
+        compute='_compute_d2x',
+        string='AVG Days to Receivable (YTD)'
+    )
 
     def _compute_d2x(self):
         for partner in self:
